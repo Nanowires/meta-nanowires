@@ -6,7 +6,7 @@ This layer provides a collecttion of recipes.
 Provided recipes
 ----------------
 
-- nextclud
+- nextcloud
 - ntfy
 
 Dependencies
