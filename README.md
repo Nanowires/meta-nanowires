@@ -1,7 +1,7 @@
 # meta-nanowires
 ===================
 
-This layer provides a collecttion of recipes.
+This layer provides a collection of recipes.
 
 Provided recipes
 ----------------
