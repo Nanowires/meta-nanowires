@@ -1,0 +1,11 @@
+<?php
+$CONFIG = array (
+  'trusted_domains' =>
+  array (
+    0 => '$MACHINE.local',
+  ),
+  'datadirectory' => '$DATADIR',
+  'logfile' => '/var/log/nextcloud.log',
+  'loglevel' => '2',
+  'log_rotate_size' => '100000',
+);
