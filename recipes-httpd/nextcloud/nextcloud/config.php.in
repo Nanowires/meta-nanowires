@@ -8,4 +8,17 @@ $CONFIG = array (
   'logfile' => '/var/log/nextcloud.log',
   'loglevel' => '2',
   'log_rotate_size' => '100000',
+  'apps_paths' => [
+      [
+              'path'     => OC::$SERVERROOT . '/apps',
+              'url'      => '/apps',
+              'writable' => false,
+      ],
+      [
+              'path'     => OC::$SERVERROOT . '/apps2',
+              'url'      => '/apps2',
+              'writable' => true,
+      ],
+  ],
+
 );

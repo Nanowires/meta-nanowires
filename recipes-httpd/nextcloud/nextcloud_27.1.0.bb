@@ -2,7 +2,8 @@ SUMMARY = "Nexcloud Server"
 HOMEPAGE = "http://www.nextcloud.com"
 LICENSE = "AGPLv3"
 
-NEXTCLOUD_DATA_DIR ?= "/mnt/data/nextcloud/data"
+NEXTCLOUD_ROOT_DIR ?= "/mnt/data/nextcloud"
+NEXTCLOUD_DATA_DIR ?= "${NEXTCLOUD_ROOT_DIR}/data"
 NEXTCLOUD_LOGFILE ?= "/var/log/nextcloud.log"
 
 RDEPENDS:${PN} += "sqlite3 php php-cgi php-cli wget"
@@ -61,4 +62,6 @@ pkg_postinst_ontarget:${PN} () {
     touch ${NEXTCLOUD_LOGFILE}
     chown www:www ${NEXTCLOUD_LOGFILE}
     chmod 750 ${NEXTCLOUD_DATA_DIR}
+    ln -sf ${NEXTCLOUD_ROOT_DIR}/apps /var/www/nextcloud/apps2
+    chown -h www:www /var/www/nextcloud/apps2
 }
