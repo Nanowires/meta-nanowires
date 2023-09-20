@@ -6,7 +6,7 @@ NEXTCLOUD_ROOT_DIR ?= "/mnt/data/nextcloud"
 NEXTCLOUD_DATA_DIR ?= "${NEXTCLOUD_ROOT_DIR}/data"
 NEXTCLOUD_LOGFILE ?= "/var/log/nextcloud.log"
 
-RDEPENDS:${PN} += "sqlite3 php php-cgi php-cli wget"
+RDEPENDS:${PN} += "sqlite3 php php-cgi php-cli php-opcache wget"
 
 IMAGE_LINGUAS += "de-de en-us"
 
