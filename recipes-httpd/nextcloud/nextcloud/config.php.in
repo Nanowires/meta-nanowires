@@ -6,8 +6,8 @@ $CONFIG = array (
   ),
   'datadirectory' => '$DATADIR',
   'logfile' => '/var/log/nextcloud.log',
-  'loglevel' => '2',
-  'log_rotate_size' => '100000',
+  'loglevel' => 2,
+  'log_rotate_size' => 100 * 1024 * 1024,
   'apps_paths' => [
       [
               'path'     => OC::$SERVERROOT . '/apps',
