@@ -1,12 +1,7 @@
 DEPENDS:append = " curl gd gmp freetype libsodium"
 DEPENDS:class-native:append = " curl-native"
 
-SRC_URI += " \
-            file://php.ini \
-        "
-
 EXTRA_OECONF += "\
-    --enable-opcache \
     --enable-bcmath\
     --enable-intl\
     --with-curl=${STAGING_LIBDIR}/..\
@@ -15,9 +10,11 @@ EXTRA_OECONF += "\
     --enable-gd \
     --with-freetype \
     --with-sodium \
+    --enable-sysvsem \
+    --enable-exif \
 "
 
-PACKAGECONFIG += "zip openssl mysql ipv6"
+PACKAGECONFIG += "zip openssl mysql ipv6 opcache"
 
 fakeroot do_after_install() {
 }
