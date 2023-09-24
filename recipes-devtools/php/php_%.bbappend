@@ -1,4 +1,4 @@
-DEPENDS:append = " curl gd gmp freetype libsodium"
+DEPENDS:append = " curl gd gmp freetype libsodium jpeg"
 DEPENDS:class-native:append = " curl-native"
 
 EXTRA_OECONF += "\
@@ -12,6 +12,7 @@ EXTRA_OECONF += "\
     --with-sodium \
     --enable-sysvsem \
     --enable-exif \
+    --with-jpeg=${STAGING_LIBDIR}/..\
 "
 
 PACKAGECONFIG += "zip openssl mysql ipv6 opcache"

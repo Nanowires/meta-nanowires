@@ -8,6 +8,7 @@ Provided recipes
 
 - nextcloud
 - ntfy
+- imagick
 
 Dependencies
 ------------
