@@ -13,13 +13,18 @@ SRC_URI[sha256sum] = "5a364354109029d224bcbb2e82e15b248be9b641227f45e63425c06531
 
 inherit autotools pkgconfig
 
+# Can't explain, why we need the extra CFLAG for including the ImageMagick-7 folder, but it works...
 EXTRA_OECONF += "\
     --with-imagick=${STAGING_EXECPREFIXDIR} \
+    CFLAGS=-I${STAGING_INCDIR}/ImageMagick-7 \
 "
 
 do_configure:prepend() {
     cd ${S}
     ${STAGING_BINDIR_CROSS}/phpize
+    # Needed to remove the .im7 extension, so the MagickWand-config is found by the configuration
+    cd ${STAGING_BINDIR}
+    cp MagickWand-config.im7 MagickWand-config
     cd ${B}
 }
 

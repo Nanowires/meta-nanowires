@@ -1,3 +1,2 @@
-EXTRA_OECONF:remove = "--program-suffix=.im7"
-
+# Tweaks needed for imagick to compile
 SYSROOT_DIRS += "${bindir}"
