@@ -12,6 +12,7 @@ SRC_URI = "git://github.com/binwiederhier/ntfy;branch=main;protocol=https;destsu
     "
 
 SRCREV = "a75fb08ef138d67599499c1f78628a0b35fcef54"
+SRCREV_FORMAT = "*"
 PV = "v2.3.1+ntfy+git${SRCREV}"
 
 include src_uri.inc

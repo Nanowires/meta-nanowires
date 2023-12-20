@@ -9,6 +9,7 @@ Provided recipes
 - nextcloud
 - ntfy
 - imagick
+- Custom fixes for inputrc via readline recipe
 
 Dependencies
 ------------
