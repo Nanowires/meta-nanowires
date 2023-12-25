@@ -3,16 +3,15 @@ DESCRIPTION = "ntfy (pronounce: notify) is a simple HTTP-based pub-sub notificat
 HOMEPAGE = "https://ntfy.sh/"
 
 LICENSE = "Apache-2.0 & GPL-2.0-only"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=8bd107a6957b74a1316cb110b4c19a98 \
-                    file://LICENSE.GPLv2;md5=482b84950249f0918b2db94d4ed2abb9"
+LIC_FILES_CHKSUM = "file://src/import/LICENSE;md5=8bd107a6957b74a1316cb110b4c19a98 \
+                    file://src/import/LICENSE.GPLv2;md5=482b84950249f0918b2db94d4ed2abb9"
 
-S = "${WORKDIR}/git"
-SRC_URI = "git://github.com/binwiederhier/ntfy;branch=main;protocol=https;destsuffix=${S} \
+SRC_URI = "git://github.com/binwiederhier/ntfy;branch=main;protocol=https;name=${BPN} \
     file://modules.txt \
     "
 
 SRCREV = "a75fb08ef138d67599499c1f78628a0b35fcef54"
-SRCREV_FORMAT = "*"
+SRCREV_FORMAT = "ntfy"
 PV = "v2.3.1+ntfy+git${SRCREV}"
 
 include src_uri.inc
@@ -27,20 +26,26 @@ GO_IMPORT = "import"
 include relocation.inc
 
 do_compile () {
-    export GOPATH="${S}/src/import/vendor:${STAGING_DIR_TARGET}/${prefix}/local/go"
+    export GOPATH="${S}/src/import/.gopath:${S}/src/import/vendor:${STAGING_DIR_TARGET}/${prefix}/local/go"
     export CGO_ENABLED="1"
     export GOFLAGS="-mod=vendor"
 
-    TAGS="static_build ctrd no_btrfs netcgo osusergo providerless"
+    # TAGS="static_build ctrd no_btrfs netcgo osusergo providerless"
+	TAGS="static_build netcgo osusergo providerless"
 
     cd ${S}/src/import
 
-    cp ${WORKDIR}/modules.txt vendor.copy/
+	if ! [ -e vendor/.noclobber ]; then
+            ln -sf vendor.copy vendor
+	else
+	    echo "[INFO]: no clobber on vendor"
+	fi
+
+    cp ${WORKDIR}/modules.txt vendor/
     
     #${GO} build -tags "$TAGS" -ldflags "${GO_BUILD_LDFLAGS} -w -s" -o ./dist/artifacts/k3s ./cmd/server/main.go
     
-    cd ${S}
-    ln -sf src/import/vendor.copy vendor
+    cd ${S}/src/import
     # You will almost certainly need to add additional arguments here
     #oe_runmake build
     oe_runmake cli-linux-server
@@ -49,10 +54,10 @@ do_compile () {
 
 do_install () {
     install -d ${D}${sysconfdir}/ntfy
-    install -m 0644 ${S}/server/server.yml ${D}${sysconfdir}/ntfy/server.yml
+    install -m 0644 ${S}/src/import/server/server.yml ${D}${sysconfdir}/ntfy/server.yml
     
     install -d "${D}${bindir}"
-    install -m 755 "${S}/dist/ntfy_linux_server/ntfy" "${D}${bindir}/ntfy"
+    install -m 755 "${S}/src/import/dist/ntfy_linux_server/ntfy" "${D}${bindir}/ntfy"
 }
 
 INHIBIT_PACKAGE_STRIP = "1"
