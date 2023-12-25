@@ -7,10 +7,10 @@ export sites="gopkg.in/yaml.v2:gopkg.in/yaml.v2:force \
            golang.org/x/term:golang.org/x/term:force \
            golang.org/x/time:golang.org/x/time:force \
            golang.org/x/text:golang.org/x/text:force \
+           github.com/kr/text:github.com/kr/text:force \
            golang.org/x/crypto:golang.org/x/crypto:force \
            golang.org/x/oauth2:golang.org/x/oauth2:force \
            cloud.google.com/go:cloud.google.com/go:force \
-           github.com/kr/pretty:github.com/kr/pretty:force \
            golang.org/x/xerrors:golang.org/x/xerrors:force \
            google.golang.org/api:google.golang.org/api:force \
            github.com/pkg/errors:github.com/pkg/errors:force \
@@ -20,10 +20,12 @@ export sites="gopkg.in/yaml.v2:gopkg.in/yaml.v2:force \
            github.com/olebedev/when:github.com/olebedev/when:force \
            github.com/urfave/cli/v2:github.com/urfave/cli/v2:force \
            github.com/google/go-cmp:github.com/google/go-cmp:force \
+           github.com/google/s2a-go:github.com/google/s2a-go:force \
            github.com/stretchr/objx:github.com/stretchr/objx:force \
            firebase.google.com/go/v4:firebase.google.com/go/v4:force \
            cloud.google.com/go/iam:cloud.google.com/go/iam/iam:force \
            github.com/AlekSi/pointer:github.com/AlekSi/pointer:force \
+           github.com/golang-jwt/jwt:github.com/golang-jwt/jwt:force \
            github.com/xrash/smetrics:github.com/xrash/smetrics:force \
            github.com/BurntSushi/toml:github.com/BurntSushi/toml:force \
            github.com/davecgh/go-spew:github.com/davecgh/go-spew:force \
@@ -54,9 +56,12 @@ export sites="gopkg.in/yaml.v2:gopkg.in/yaml.v2:force \
            github.com/prometheus/client_model:github.com/prometheus/client_model:force \
            github.com/russross/blackfriday/v2:github.com/russross/blackfriday/v2:force \
            github.com/prometheus/client_golang:github.com/prometheus/client_golang:force \
+           github.com/SherClockHolmes/webpush-go:github.com/SherClockHolmes/webpush-go:force \
            cloud.google.com/go/longrunning:cloud.google.com/go/longrunning/longrunning:force \
            cloud.google.com/go/compute/metadata:cloud.google.com/go/compute/metadata/compute/metadata:force \
            github.com/matttproud/golang_protobuf_extensions:github.com/matttproud/golang_protobuf_extensions:force \
+           google.golang.org/genproto/googleapis/api:google.golang.org/genproto/googleapis/api/googleapis/api:force \
+           google.golang.org/genproto/googleapis/rpc:google.golang.org/genproto/googleapis/rpc/googleapis/rpc:force \
            github.com/googleapis/enterprise-certificate-proxy:github.com/googleapis/enterprise-certificate-proxy:force"
 
 do_compile:prepend() {

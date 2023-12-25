@@ -10,9 +10,9 @@ SRC_URI = "git://github.com/binwiederhier/ntfy;branch=main;protocol=https;name=$
     file://modules.txt \
     "
 
-SRCREV = "a75fb08ef138d67599499c1f78628a0b35fcef54"
+SRCREV = "2f0ec88f40418660e5b99a7ad589d661d8c4ff6f"
 SRCREV_FORMAT = "ntfy"
-PV = "v2.3.1+ntfy+git${SRCREV}"
+PV = "v2.7.0+ntfy+git${SRCREV}"
 
 include src_uri.inc
 
