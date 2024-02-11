@@ -15,11 +15,11 @@ SRC_URI[sha256sum] = "5a364354109029d224bcbb2e82e15b248be9b641227f45e63425c06531
 inherit autotools pkgconfig
 
 # Can't explain, why we need the extra CFLAG for including the ImageMagick-7 folder, but it works...
+# Also I don't know why we need to specify the ImageMagick libraries to include to, but it works...
 EXTRA_OECONF += "\
     --with-imagick=${STAGING_EXECPREFIXDIR} \
     CFLAGS=-I${STAGING_INCDIR}/ImageMagick-7 \
     LIB=-lMagickCore-7.Q16HDRI \
-    LDLIBS=-lMagickCore-7.Q16HDRI \
     IMAGICK_SHARED_LIBADD='-lMagickCore-7.Q16HDRI -lMagick++-7.Q16HDRI -lMagickWand-7.Q16HDRI' \
 "
 
