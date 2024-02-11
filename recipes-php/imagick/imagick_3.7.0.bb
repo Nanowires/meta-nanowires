@@ -5,6 +5,7 @@ LICENSE = "PHP-3.01"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=dd34a70236f008af999de817b93a5e3a"
 
 DEPENDS = "php imagemagick"
+RDEPENDS:${PN} += "imagemagick"
 
 SRC_URI = "https://pecl.php.net/get/imagick-${PV}.tgz"
 
@@ -17,6 +18,9 @@ inherit autotools pkgconfig
 EXTRA_OECONF += "\
     --with-imagick=${STAGING_EXECPREFIXDIR} \
     CFLAGS=-I${STAGING_INCDIR}/ImageMagick-7 \
+    LIB=-lMagickCore-7.Q16HDRI \
+    LDLIBS=-lMagickCore-7.Q16HDRI \
+    IMAGICK_SHARED_LIBADD='-lMagickCore-7.Q16HDRI -lMagick++-7.Q16HDRI -lMagickWand-7.Q16HDRI' \
 "
 
 do_configure:prepend() {
