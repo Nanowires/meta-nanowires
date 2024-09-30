@@ -18,7 +18,7 @@ inherit autotools pkgconfig
 # Also I don't know why we need to specify the ImageMagick libraries to include to, but it works...
 EXTRA_OECONF += "\
     --with-imagick=${STAGING_EXECPREFIXDIR} \
-    CFLAGS=-I${STAGING_INCDIR}/ImageMagick-7 \
+    CFLAGS="-I${STAGING_INCDIR}/ImageMagick-7 -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=64" \
     LIB=-lMagickCore-7.Q16HDRI \
     IMAGICK_SHARED_LIBADD='-lMagickCore-7.Q16HDRI -lMagick++-7.Q16HDRI -lMagickWand-7.Q16HDRI' \
 "
