@@ -9,8 +9,8 @@ RDEPENDS:${PN} += "imagemagick"
 
 SRC_URI = "https://pecl.php.net/get/imagick-${PV}.tgz"
 
-SRC_URI[md5sum] = "0687774a6126467d4e5ede02171e981d"
-SRC_URI[sha256sum] = "5a364354109029d224bcbb2e82e15b248be9b641227f45e63425c06531792d3e"
+SRC_URI[md5sum] = "aadbb5ad3db484e19bb6ba39aa2cd4a0"
+SRC_URI[sha256sum] = "3a3587c0a524c17d0dad9673a160b90cd776e836838474e173b549ed864352ee"
 
 inherit autotools pkgconfig
 
