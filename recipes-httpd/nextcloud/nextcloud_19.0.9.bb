@@ -22,7 +22,7 @@ SRC_URI = "https://download.nextcloud.com/server/releases/${P}.tar.bz2 \
 SRC_URI[md5sum] = "038edc36b41f5c1c91cbe86cf3899c10"
 SRC_URI[sha256sum] = "c6cd9d337b91da06f1210efe7cf37467aa32206cd069dbc579d4d2ada881d422"
 
-S = "${WORKDIR}/${PN}"
+S = "${UNPACKDIR}/${PN}"
 
 inherit allarch
 
@@ -39,13 +39,13 @@ do_install() {
 
     # webserver configs
     install -d ${D}${sysconfdir}/apache2/conf.d
-    install -m 0644 ${WORKDIR}/apache.conf ${D}${sysconfdir}/apache2/conf.d/nextcloud.conf
+    install -m 0644 ${UNPACKDIR}/apache.conf ${D}${sysconfdir}/apache2/conf.d/nextcloud.conf
 
     install -d ${D}${sysconfdir}/nginx/sites-enabled
-    install -m 0644 ${WORKDIR}/nginx.conf ${D}${sysconfdir}/nginx/sites-enabled/nextcloud.conf
+    install -m 0644 ${UNPACKDIR}/nginx.conf ${D}${sysconfdir}/nginx/sites-enabled/nextcloud.conf
 
     # generate config
-    install -m 0640 ${WORKDIR}/config.php.in ${D}${localstatedir}/www/${BPN}/config/config.php
+    install -m 0640 ${UNPACKDIR}/config.php.in ${D}${localstatedir}/www/${BPN}/config/config.php
     sed -i 's:$MACHINE:${MACHINE}:g' ${D}${localstatedir}/www/${BPN}/config/config.php
     sed -i 's:$DATADIR:${NEXTCLOUD_DATA_DIR}:g' ${D}${localstatedir}/www/${BPN}/config/config.php
     sed -i 's:$MACHINE:${MACHINE}:g' ${D}${sysconfdir}/apache2/conf.d/nextcloud.conf

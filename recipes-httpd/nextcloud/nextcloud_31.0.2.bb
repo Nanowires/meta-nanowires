@@ -25,7 +25,7 @@ SRC_URI = "https://download.nextcloud.com/server/releases/${P}.tar.bz2 \
 SRC_URI[md5sum] = "c54f68adbe6203f2ec25d7ac0aa1ec34"
 SRC_URI[sha256sum] = "00b572111b7c2b98842d95c046de79ef463ccfadc8a04b54006c786e1f94c310"
 
-S = "${WORKDIR}/${PN}"
+S = "${UNPACKDIR}/${PN}"
 
 FILES:${PN} += "${localstatedir}/*"
 
@@ -39,13 +39,13 @@ do_install() {
 
     # webserver configs
     install -d ${D}${sysconfdir}/apache2/conf.d
-    install -m 0644 ${WORKDIR}/apache.conf ${D}${sysconfdir}/apache2/conf.d/nextcloud.conf
+    install -m 0644 ${UNPACKDIR}/apache.conf ${D}${sysconfdir}/apache2/conf.d/nextcloud.conf
 
     install -d ${D}${sysconfdir}/nginx/sites-enabled
-    install -m 0644 ${WORKDIR}/nginx.conf ${D}${sysconfdir}/nginx/sites-enabled/nextcloud.conf
+    install -m 0644 ${UNPACKDIR}/nginx.conf ${D}${sysconfdir}/nginx/sites-enabled/nextcloud.conf
 
     # generate config
-    install -m 0640 ${WORKDIR}/config.php.in ${D}${localstatedir}/www/${BPN}/config/config.php
+    install -m 0640 ${UNPACKDIR}/config.php.in ${D}${localstatedir}/www/${BPN}/config/config.php
     sed -i 's:$MACHINE:${MACHINE}:g' ${D}${localstatedir}/www/${BPN}/config/config.php
     sed -i 's:$DATADIR:${NEXTCLOUD_DATA_DIR}:g' ${D}${localstatedir}/www/${BPN}/config/config.php
     sed -i 's:$MACHINE:${MACHINE}:g' ${D}${sysconfdir}/apache2/conf.d/nextcloud.conf

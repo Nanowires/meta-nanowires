@@ -22,7 +22,7 @@ fakeroot do_after_install() {
 
 fakeroot do_after_install:class-target() {
     install -d ${D}${sysconfdir}/php/fpm-php${PHP_MAJOR_VERSION}
-    install -m 0644 ${WORKDIR}/php.ini ${D}${sysconfdir}/php/fpm-php${PHP_MAJOR_VERSION}/php.ini
+    install -m 0644 ${UNPACKDIR}/php.ini ${D}${sysconfdir}/php/fpm-php${PHP_MAJOR_VERSION}/php.ini
 }
 
 do_after_install[depends] += "virtual/fakeroot-native:do_populate_sysroot"

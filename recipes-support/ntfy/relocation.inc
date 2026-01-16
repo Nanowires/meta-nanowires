@@ -1,4 +1,4 @@
-export sites="gopkg.in/yaml.v2:gopkg.in/yaml.v2:force \
+export sites = "gopkg.in/yaml.v2:gopkg.in/yaml.v2:force \
            go.opencensus.io:go.opencensus.io:force \
            golang.org/x/net:golang.org/x/net:force \
            golang.org/x/sys:golang.org/x/sys:force \

@@ -6,20 +6,19 @@ LICENSE = "Apache-2.0 & GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://src/import/LICENSE;md5=8bd107a6957b74a1316cb110b4c19a98 \
                     file://src/import/LICENSE.GPLv2;md5=482b84950249f0918b2db94d4ed2abb9"
 
-SRC_URI = "git://github.com/binwiederhier/ntfy;branch=main;protocol=https;name=${BPN} \
+SRC_URI = "git://github.com/binwiederhier/ntfy;branch=main;protocol=https;name=${BPN};destsuffix=${GO_SRCURI_DESTSUFFIX} \
     file://modules.txt \
     "
 
 SRCREV = "2f0ec88f40418660e5b99a7ad589d661d8c4ff6f"
 SRCREV_FORMAT = "ntfy"
-PV = "v2.7.0+ntfy+git${SRCREV}"
+PV = "v2.7.0+ntfy+git"
 
 include src_uri.inc
 
 DEPENDS += "rsync-native"
 
 inherit go
-#inherit npm
 
 GO_IMPORT = "import"
 
@@ -30,7 +29,6 @@ do_compile () {
     export CGO_ENABLED="1"
     export GOFLAGS="-mod=vendor"
 
-    # TAGS="static_build ctrd no_btrfs netcgo osusergo providerless"
 	TAGS="static_build netcgo osusergo providerless"
 
     cd ${S}/src/import
@@ -41,7 +39,7 @@ do_compile () {
 	    echo "[INFO]: no clobber on vendor"
 	fi
 
-    cp ${WORKDIR}/modules.txt vendor/
+    cp ${UNPACKDIR}/modules.txt vendor/
     
     #${GO} build -tags "$TAGS" -ldflags "${GO_BUILD_LDFLAGS} -w -s" -o ./dist/artifacts/k3s ./cmd/server/main.go
     
@@ -61,4 +59,4 @@ do_install () {
 }
 
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP:${PN} += "ldflags already-stripped"
+INSANE_SKIP:${PN} += "ldflags already-stripped buildpaths"
