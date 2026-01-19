@@ -1,6 +1,6 @@
 SUMMARY = "Nexcloud Server"
 HOMEPAGE = "http://www.nextcloud.com"
-LICENSE = "AGPL-3.0"
+LICENSE = "AGPL-3.0-only"
 
 NEXTCLOUD_ROOT_DIR ?= "/mnt/data/nextcloud"
 NEXTCLOUD_DATA_DIR ?= "${NEXTCLOUD_ROOT_DIR}/data"
