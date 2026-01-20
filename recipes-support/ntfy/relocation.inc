@@ -65,7 +65,7 @@ export sites = "gopkg.in/yaml.v2:gopkg.in/yaml.v2:force \
            github.com/googleapis/enterprise-certificate-proxy:github.com/googleapis/enterprise-certificate-proxy:force"
 
 do_compile:prepend() {
-    cd ${S}/src/import
+    cd ${S}/src/${GO_IMPORT}
     for s in $sites; do
         site_dest=$(echo $s | cut -d: -f1)
         site_source=$(echo $s | cut -d: -f2)
