@@ -15,7 +15,7 @@ EXTRA_OECONF += "\
     --with-jpeg=${STAGING_LIBDIR}/..\
 "
 
-PACKAGECONFIG += "zip openssl mysql ipv6"
+PACKAGECONFIG:append = "zip openssl mysql ipv6"
 
 fakeroot do_after_install() {
 }
