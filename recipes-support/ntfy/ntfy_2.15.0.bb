@@ -2,7 +2,7 @@ SUMMARY = "Send push notifications to your phone or desktop via PUT/POST"
 DESCRIPTION = "ntfy (pronounce: notify) is a simple HTTP-based pub-sub notification service. It allows you to send notifications to your phone or desktop via scripts from any computer, entirely without signup, cost or setup. It's also open source if you want to run your own."
 HOMEPAGE = "https://ntfy.sh/"
 
-LICENSE = "Apache-2.0 & GPL-2.0-only"
+LICENSE = "Apache-2.0 AND GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=8bd107a6957b74a1316cb110b4c19a98 \
                     file://src/${GO_IMPORT}/LICENSE.GPLv2;md5=482b84950249f0918b2db94d4ed2abb9"
 
